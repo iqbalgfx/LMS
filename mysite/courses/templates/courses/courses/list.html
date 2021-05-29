@@ -1,0 +1,18 @@
+{% extends "courses/base.html" %}
+{% block title %}درس من{% endblock %}
+{% block content %}
+<h1>لیست دروس انتخابی</h1>
+{% for course in courses %}
+<h2>
+    <a href="{{ course.get_absolute_url }}">
+        {{ course.title }}
+    </a>
+</h2>
+<p class="date">
+    انتشاریافته در {{ course.publish }} توسط {{ course.author }}
+</p>
+<h6>بازدید : <b><i> {{course.visits}}</b></i></h6>
+{{ course.body|truncatewords:30|linebreaks }}
+{% endfor %}
+{% include "pagination.html" with page=courses %}
+{% endblock %}

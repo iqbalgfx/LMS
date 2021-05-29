@@ -1,0 +1,15 @@
+{% extends "courses/base.html" %}
+{% block title %}{{ course.title }}{% endblock %}
+{% block content %}
+<h1>{{ course.title }}</h1>
+<p class="date">
+    انتشار یافته در {{ course.publish }} توسط {{ course.author }}-بازدید:{{course.visits}}
+</p>
+<p>
+خلاصه:
+</p>
+{{ course.summary}}
+<hr/>
+{{ course.body|linebreaks }}
+{% include "pagination.html" with page=courses %}
+{% endblock %}
